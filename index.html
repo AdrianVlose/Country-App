@@ -7,53 +7,32 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="main">
+    <header>
       <h1>Country for search</h1>
-      <div class="input-box">
-        <input
-          id="input-field"
-          type="text"
-          placeholder="Type a country name..."
-        />
-        <button type="submit">Search</button>
+    </header>
+    <main>
+      <aside class="sidebar">
+        <details>
+          <summary>Favorite Countries</summary>
+          <article class="details-list" id="favorites-list"></article>
+        </details>
+        <details>
+          <summary>Search History</summary>
+          <article class="details-list" id="history-list"></article>
+        </details>
+      </aside>
+      <div class="main-content">
+        <search class="search-box">
+          <input
+            id="input-field"
+            type="text"
+            placeholder="Type a country name..."
+          />
+          <button type="submit">Search</button>
+        </search>
+        <section id="card-box"></section>
       </div>
-      <div id="card-box"></div>
-    </div>
-    <div class="sidebar-options" id="sidebar">
-      <img
-        src="./assets/file-heart.svg"
-        alt="Favorites list icon"
-        class="option"
-        id="favorites-list"
-      />
-      <img
-        src="./assets/file-clock.svg"
-        alt="History list icon"
-        class="option"
-        id="history-list"
-      />
-    </div>
-    <div class="overlay" id="overlay"></div>
-    <div class="sidebar" id="favorites">
-      <h2>Favorite Countries</h2>
-      <div class="country-list" id="display-favorites"></div>
-      <img
-        src="./assets/x.svg"
-        alt="exit-icon"
-        class="exit-icon"
-        id="exit-fav"
-      />
-    </div>
-    <div class="sidebar" id="history">
-      <h2>Search History</h2>
-      <div class="country-list" id="display-history"></div>
-      <img
-        src="./assets/x.svg"
-        alt="exit-icon"
-        class="exit-icon"
-        id="exit-history"
-      />
-    </div>
+    </main>
     <script src="./main.js" type="module" />
   </body>
 </html>
