@@ -3,14 +3,16 @@
   --primary-light-bg-color: #ffffff;
   --second-dark-bg-color: #050505;
   --second-light-bg-color: #f9fafb;
-  --third-dark-bg-color: #111827;
+  --third-dark-bg-color: #1a1a1a;
   --third-light-bg-color: #f3f4f6;
   --text-label-color: #9ca3af;
-  --text-nav-color: #f3faf6;
+  --text-nav-color: #f3f4f6;
   --text-main-color: #ffffff;
   --primary-border-color: #d1d5db;
   --second-border-color: #e5e7eb;
   --third-border-color: #1f2937;
+  --dark-link-color: #60a5fa;
+  --light-link-color: #2563eb;
 }
 
 *,
@@ -62,19 +64,18 @@ main {
 summary {
   color: var(--text-nav-color);
   font-size: 1.25rem;
-  font-weight: semi-bold;
-  background-color: var(--third-dark-bg-color);
+  font-weight: 400;
   padding: 1rem 0 1rem 1rem;
   border-bottom: 1px solid var(--third-border-color);
   border-top: 1px solid var(--third-border-color);
 }
 
 .details-list {
-  background: var(--third-dark-bg-color);
+  background-color: #1a1a1a;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
 }
 
 details[open] {
@@ -85,16 +86,17 @@ details[open] {
   max-height: 240px;
   overflow-x: hidden;
   gap: 0.5rem;
+  padding-left: 2rem;
 }
 
 .sidebar article h3 {
   color: var(--text-nav-color);
   font-size: 1rem;
   font-weight: 400;
-  text-align: center;
+  text-align: left;
   width: 40%;
   margin: 0;
-  padding: 0.5rem;
+  padding: 0.5rem 0;
 }
 
 .main-content {
@@ -150,6 +152,7 @@ details[open] {
   height: 85%;
   width: 100%;
   justify-content: space-around;
+  align-items: center;
   flex-direction: row;
   padding-top: 2%;
 }
@@ -161,9 +164,17 @@ details[open] {
   position: relative;
   grid-template-columns: repeat(10, 1fr);
   grid-template-rows: repeat(10, 1fr);
-  background-color: var(--second-dark-bg-color);
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.dark {
+  background-color: var(--second-dark-bg-color);
+}
+
+.light {
+  background-color: var(--primary-light-bg-color);
+  border: 1px solid var(--second-border-color);
 }
 
 .card figure {
@@ -200,8 +211,15 @@ details[open] {
 .card .country-main-info h2 {
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--primary-light-bg-color);
   margin: 0;
+}
+
+.dark .country-main-info h2 {
+  color: var(--primary-light-bg-color);
+}
+
+.light .country-main-info h2 {
+  color: var(--third-border-color);
 }
 
 .card .country-main-info h4 {
@@ -216,7 +234,6 @@ details[open] {
   grid-column-end: -1;
   grid-row-start: 4;
   grid-row-end: 6;
-  background-color: var(--third-dark-bg-color);
   height: 80%;
   align-self: center;
   margin: 0 1rem;
@@ -228,11 +245,26 @@ details[open] {
   justify-content: center;
 }
 
+.dark .weather-info {
+  background-color: var(--third-dark-bg-color);
+}
+
+.light .weather-info {
+  background-color: var(--text-nav-color);
+}
+
 .card .weather-info h2 {
   font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--primary-light-bg-color);
+  font-weight: 600;
   margin: 0;
+}
+
+.dark .weather-info h2 {
+  color: var(--primary-light-bg-color);
+}
+
+.light .weather-info h2 {
+  color: var(--third-border-color);
 }
 
 .card .weather-info h4 {
@@ -274,26 +306,53 @@ details[open] {
   gap: 0.5rem;
 }
 .card .extra-info h2 {
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   font-weight: 400;
-  color: var(--primary-light-bg-color);
   margin: 0;
 }
 
+.dark .extra-info h2 {
+  color: var(--primary-light-bg-color);
+}
+
+light .extra-info h2 {
+  color: var(--third-border-color);
+}
+
 .card .extra-info h4 {
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   font-weight: 400;
   color: var(--text-label-color);
   margin: 0;
 }
 
+.dark a {
+  color: var(--dark-link-color);
+}
+
+.light a {
+  color: var(--light-link-color);
+}
+
 .card .favorite {
-  background-color: var(--primary-dark-bg-color);
   position: absolute;
   right: 0.5%;
   top: 2%;
   border-radius: 12px;
   padding: 8px;
+}
+
+.loading-icon {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .main-content .arrows {
@@ -303,7 +362,15 @@ details[open] {
 }
 
 .main-content .arrow {
+  opacity: 0;
   padding: 0.25rem;
   border-radius: 24px;
-  border: 1px solid var(--primary-border-color);
+  border: 1.25px solid var(--primary-border-color);
+}
+
+.main-content .disabled {
+  pointer-events: none;
+  cursor: not-allowed;
+  transition: all 0.3s ease;
+  background-color: var(--primary-dark-bg-color);
 }
