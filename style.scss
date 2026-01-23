@@ -23,11 +23,29 @@ header {
   width: 100%;
   height: 10%;
   top: 0;
+  position: relative;
 
   h1 {
     color: $text-main-color;
     font-weight: 700;
-    text-align: center;
+    text-align: left;
+    padding-left: 3rem;
+  }
+
+  .menu-icon {
+    position: absolute;
+    right: 2%;
+    align-self: anchor-center;
+
+    @media (width >= 750px) {
+      display: none;
+    }
+  }
+
+  @media (width < 750px) {
+    h1 {
+      text-align: center;
+    }
   }
 }
 
@@ -36,6 +54,23 @@ main {
   display: flex;
   flex-direction: row;
   height: 90%;
+
+  @media (width < 750px) {
+    flex-direction: column;
+
+    .main-content.disabled {
+      display: none;
+    }
+
+    .sidebar {
+      display: none;
+      width: 100%;
+    }
+
+    .sidebar.active {
+      display: flex;
+    }
+  }
 }
 
 .sidebar {
@@ -75,6 +110,18 @@ main {
       margin: 0;
       padding: 0.5rem 0;
     }
+
+    .history-button {
+      color: $text-nav-color;
+      font-size: 1rem;
+      font-weight: 400;
+      text-align: left;
+      width: 40%;
+      margin: 0;
+      padding: 0.5rem 0;
+      border: 0;
+      background-color: transparent;
+    }
   }
 }
 
@@ -101,6 +148,10 @@ details[open] {
   justify-content: space-between;
   align-items: center;
 
+  @media (width < 750px) {
+    width: 100%;
+  }
+
   input {
     width: 80%;
     border-radius: 8px;
@@ -116,6 +167,7 @@ details[open] {
     border-radius: 8px;
     height: 100%;
     width: 12%;
+    min-width: 70px;
     background-color: $primary-dark-bg-color;
     font-size: 1rem;
     color: $primary-light-bg-color;
@@ -128,6 +180,11 @@ details[open] {
       transform: scale(1.05);
     }
   }
+
+  @media (width >= 750px) and (width <= 1250px) {
+    align-self: flex-start;
+    gap: 5%;
+  }
 }
 
 .main-content .cards {
@@ -138,6 +195,12 @@ details[open] {
   align-items: center;
   flex-direction: row;
   padding-top: 2%;
+  overflow-x: hidden;
+
+  @media (width < 750px) {
+    flex-direction: column;
+    gap: 2%;
+  }
 }
 
 .cards .no-country-text {
