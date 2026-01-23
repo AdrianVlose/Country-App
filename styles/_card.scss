@@ -12,7 +12,7 @@
 
   figure {
     grid-column-start: 1;
-    grid-column-end: 4;
+    grid-column-end: 5;
     grid-row-start: 1;
     grid-row-end: 4;
     margin: 0;
@@ -29,8 +29,8 @@
   }
 
   .country-main-info {
-    grid-column-start: 4;
-    grid-column-end: 7;
+    grid-column-start: 5;
+    grid-column-end: 8;
     grid-row-start: 1;
     grid-row-end: 4;
     display: flex;
@@ -52,6 +52,23 @@
       font-weight: 400;
       margin: 0;
     }
+  }
+
+  @media (width >= 750px) and (width <= 1250px) {
+    figure {
+      grid-column-start: 1;
+      grid-column-end: 6;
+    }
+
+    .country-main-info {
+      grid-column-start: 6;
+      grid-column-end: 9;
+    }
+  }
+
+  @media (width < 750px) {
+    width: 95%;
+    height: 100%;
   }
 
   .weather-info {
